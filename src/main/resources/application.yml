@@ -1,0 +1,73 @@
+﻿server:
+  port: 8082
+
+spring:
+#  连接数据库
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.71.129:3306/tblog?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+  # redis相关配置
+  redis:
+    host: 192.168.71.129
+    port: 6379
+    database: 0
+    timeout: 6000
+    password: 123456
+  servlet:
+    multipart:
+      max-file-size: 15MB
+# mybatis相关配置
+#mybatis:
+  # xml扫描，多个目录用逗号或者分号分隔（告诉 Mapper 所对应的 XML 文件位置）
+#  mapper-locations: classpath:mapper/*.xml
+#  configuration:
+#    配置开启驼峰
+#    map-underscore-to-camel-case: true
+#    打印SQL
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#file:
+#校验码生成路径
+#  verify:
+#    filePath: D:\code\verify
+#编辑器文件路径
+#  editor:
+#    saveFilePath: D:\code\editor
+#博客封面图
+#  cover:
+#    saveFilePath: D:\code\cover
+
+zhenzi:
+  apiUrl: https://sms_developer.zhenzikj.com
+  appId: 
+  appSecret: 
+
+#rsa:
+#  key:
+#    pubKeyFile: D:\\code\\public_key_rsa
+#    priKeyFile: D:\\code\\private_key_rsa
+
+# mybatis-plus相关配置
+mybatis-plus:
+  global-config:
+    db-config:
+      #主键类型 auto:"数据库ID自增" 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+      id-type: auto
+      #字段策略 IGNORED:"忽略判断"  NOT_NULL:"非 NULL 判断")  NOT_EMPTY:"非空判断"
+      field-strategy: not_empty
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射
+    map-underscore-to-camel-case: true
+    # 如果查询结果中包含空值的列，则 MyBatis 在映射的时候，不会映射这个字段
+    call-setters-on-nulls: true
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.xiong.tblog.entity
+
+logging:
+  level:
+    com.xiong.tinews.mapper: info
